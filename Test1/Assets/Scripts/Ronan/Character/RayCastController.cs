@@ -6,7 +6,7 @@ using UnityEngine;
 public class RayCastController : MonoBehaviour {
 
 	public GameObject[] Rays;
-	public GameObject RayHolder;
+	public GameObject RayHolder,AimerHolder;
 	public Pounce pnce;
 
 	public TestLevel TL;
@@ -91,16 +91,18 @@ public class RayCastController : MonoBehaviour {
 		return null;
 	}
 
-	//turns raycast holder right
+	//turns raycast holder & Aimer Holder right
 	public void TurnRight()
 	{
 		RayHolder.transform.Rotate (0, 0, 90f);
+		AimerHolder.transform.Rotate (0, 0, 90f);
 		print("turned right");
 	}
-	//turns raycast holder left
+	//turns raycast holder & Aimer Holder left
 	public void TurnLeft()
 	{
 		RayHolder.transform.Rotate (0, 0, -90f);
+		AimerHolder.transform.Rotate (0, 0, -90f);
 		print ("turned left");
 	}
 }

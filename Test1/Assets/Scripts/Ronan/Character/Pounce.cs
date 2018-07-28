@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using InControl;
 
 //handles the pounce mechanic
 public class Pounce : MonoBehaviour {
@@ -16,13 +17,20 @@ public class Pounce : MonoBehaviour {
 	public GameObject PrevGameobj;
 	public GameObject theLevel;
 
+	public bool rightBeingUsed;
+	public float powerVal;
+
 	private Vector2 initPos, endPos;
 	private Vector2 OriPos;
-	private float Power = 100f;
+	private float Power = 900f;
 	private float AttachDistance = 1.3f;
 	private float PullDistance = 10f;
 
 	private Vector2 distFromParent;
+	private bool isIncreasing;
+
+	public Vector2 rightStick;
+
 
 
 
@@ -34,70 +42,134 @@ public class Pounce : MonoBehaviour {
 		rb = gameObject.GetComponent<Rigidbody2D> ();
 		Char = gameObject.GetComponent<Character> ();
 		OriPos = new Vector2 (0, 0);
+		rightBeingUsed = false; 
+		powerVal = 15;
+		isIncreasing = false;
 	}
 	
 
 	void Update () {
 
-		//print ("x " +rb.velocity.x.ToString());
-		//print ("y " + rb.velocity.y.ToString());
-		//print(CurrGameobj.name);
+		//Checks for controller
+		InputDevice inDev = InputManager.ActiveDevice;
+		//print (inDev.RightStickX);
 
-		/////////////////////////////////////////////////
-		//Handling of clicking and dragging for pounce
-		if (Input.GetMouseButtonDown (0) &&Vector3.Distance( MF.FindMouse(),gameObject.transform.position)<=AttachDistance && !TL.isTurning) {
-			isClicked = true;
-			initPos = MF.FindMouse2D ();
-		
+		//updates controller
+		if (inDev != null) {
+			UpdateInDev (inDev);
 		}
 
-		else if (Input.GetMouseButtonUp (0)) {
-			
-			if (isClicked) {
-				isClicked = false;
-				Char.isImmobile = false;
-				endPos = MF.FindMouse2D ();
-				transform.parent = null;
-				PrevGameobj = CurrGameobj;
-				LaunchCharacter ();
+		//Increases power
+		//if you change the values change them in start too
+		if(rightBeingUsed)
+		{
+			if(powerVal<30)
+			{
+				if (!isIncreasing) {
+					StartCoroutine (IncreasePower ());
+				}
 			}
+		}
+		else if(!rightBeingUsed)
+		{
+			powerVal = 15;
+		}
+			
+		if (Input.GetKeyDown (KeyCode.Return)) {
+			
+		}
+		
+		/////////////////////////////////////////////////////
+		if(inDev.RightTrigger.WasPressed &&rightBeingUsed && (!TL.isTurningRight|| !TL.isTurningLeft))
+		{
+			Char.isImmobile = false;
+			rb.velocity = Vector2.zero;
+			endPos = MF.FindMouse2D ();
+			transform.parent = null;
+			PrevGameobj = CurrGameobj;
+			LaunchCharacter ();
+
 
 		}
 		//////////////////////////////////////////////////////////
 
 		//Makes player immobile
 		if (Char.isImmobile) {
-			rb.gravityScale=0;
+			rb.isKinematic = true;
+			//rb.gravityScale=0;
 			rb.velocity = Vector2.zero;
 		} else if(!Char.isImmobile) {
-			rb.gravityScale=1;
+			//rb.gravityScale=1;
+			rb.isKinematic= false;
 		}
+
 
 	}
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
 		//Handles the player collision with the environment
-		if(other.gameObject.tag == "Environment" && other.gameObject != CurrGameobj)
+		if(other.gameObject.tag == "Environment" && other.collider.transform.gameObject != CurrGameobj)
 		{
 			Char.isImmobile = true;
-			CurrGameobj = other.gameObject;
+			CurrGameobj = other.collider.gameObject;
 			transform.parent = theLevel.transform;
-
+			//Debug.Break ();
 		}
 	}
 	void OnCollisionExit2D(Collision2D other)
 	{
 		
 	}
+
+	//updates world from the controller input
+	void UpdateInDev (InputDevice inDev)
+	{
+		rightStick = inDev.RightStick.Vector;
+
+		if (rightStick.normalized.magnitude > 0.11f) {
+			rightBeingUsed = true;
+		} else if (rightStick.normalized.magnitude <= 0.11f) {
+			rightBeingUsed = false;
+		}
+			
+	}
+	//checks level rotation
+	bool CheckLevelRot()
+	{
+		float _rot = theLevel.transform.eulerAngles.z;
+
+		if (_rot < 1 && _rot > -1) {
+			return true;
+		} else if (_rot < 91 && _rot > 89) {
+			return true;
+		} else if (_rot < 181 && _rot > 179) {
+			return true;
+		} else if (_rot < 271 && _rot > 269) {
+			return true;
+		} else {
+			return false;
+		}
+		return false;
+	}
 		
 	//Shoots the player in a chosen direction
 	void LaunchCharacter()
 	{
 		
-		rb.AddForce (CalculateForce()*Power);
+		rb.velocity=(rightStick*powerVal);
 
 
+
+	}
+
+	//increases shooting power
+	IEnumerator IncreasePower()
+	{
+		isIncreasing = true;
+		powerVal += 1;
+		yield return new WaitForSecondsRealtime ((0.07f));
+		isIncreasing = false;
 	}
 
 	//calculates the power of the shot

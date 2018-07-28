@@ -5,6 +5,7 @@ using UnityEngine;
 //This script is where you define any important characteristic of the player
 public class Character : MonoBehaviour {
 
+	//if the player can move
 	public bool isImmobile;
 	public RayCastController RCC;
 
