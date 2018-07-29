@@ -48,19 +48,19 @@ public class TestLevel : MonoBehaviour {
 		if (Mathf.Abs (GroundLevel.transform.position.y - ThePlayer.transform.position.y) > 13.5) {
 			print ("big");
 			if (!RCC.attachTop && !RCC.attachBottom) {
-				if (RCC.attachRight && !hasTurned) {
+				if (RCC.attachRight && !hasTurned && !isTurningRight) {
 					
 					ChangeCounter (true);
 
 
-					RCC.TurnRight ();
+
 
 					StartCoroutine (RotateRight ());
 
 				}
-				if (RCC.attachLeft && !hasTurned) {
+				if (RCC.attachLeft && !hasTurned && !isTurningLeft) {
 					ChangeCounter (false);
-					RCC.TurnLeft ();
+
 					StartCoroutine (RotateLeft ());
 
 				}
@@ -84,8 +84,13 @@ public class TestLevel : MonoBehaviour {
 		}
 
 
-		if (Input.GetKeyDown (KeyCode.Return)) {
-			
+
+		if (!isTurningRight && !isTurningLeft) {
+			if(RCC.attachBottom || RCC.attachBottomAny|| RCC.attachTopAny||RCC.attachTop)
+			{
+				ThePlayer.GetComponent<Character> ().canJump = true;
+				print ("sdtuff");
+			}
 		}
 
 
@@ -152,6 +157,8 @@ public class TestLevel : MonoBehaviour {
 	//rotates the stage right
 	public IEnumerator RotateRight()
 	{
+		RCC.TurnRight ();
+
 		float step = TimeToRotate * multiplier*Time.deltaTime*2;
 		isTurningRight = true;
 		float amount = 0;
@@ -193,6 +200,7 @@ public class TestLevel : MonoBehaviour {
 
 		Level.transform.position= new Vector3 (0, 0, 0);
 		isTurningRight = false;
+		ThePlayer.GetComponent<Character> ().canJump = true;
 
 
 	}
@@ -224,7 +232,7 @@ public class TestLevel : MonoBehaviour {
 		}
 
 		isTurningRight = false;
-
+		ThePlayer.GetComponent<Character> ().canJump = true;
 
 	}
 
@@ -234,6 +242,9 @@ public class TestLevel : MonoBehaviour {
 	//rotates the stage left fully
 	public IEnumerator RotateLeft()
 	{
+		
+		RCC.TurnLeft ();
+
 		float step = TimeToRotate * multiplier*Time.deltaTime*2;
 		isTurningLeft = true;
 		float amount = 0;
@@ -272,6 +283,7 @@ public class TestLevel : MonoBehaviour {
 		Level.transform.eulerAngles = _tempVec2;
 		Level.transform.position= new Vector3 (0, 0, 0);
 		isTurningLeft = false;
+		ThePlayer.GetComponent<Character> ().canJump = true;
 	}
 	//rotates the stage only a bit and then returns it to its orignal rotation
 	public IEnumerator RotateLeftSmall()
@@ -303,7 +315,7 @@ public class TestLevel : MonoBehaviour {
 		}
 
 		isTurningLeft = false;
-
+		ThePlayer.GetComponent<Character> ().canJump = true;
 
 	}
 

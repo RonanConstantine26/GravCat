@@ -42,8 +42,8 @@ public class LrController : MonoBehaviour {
 
 		//Handles changing of arrow size and colour
 		ArrowSize = 2 + (pnce.powerVal -5)/3 - 1;
-		lrH.Lr.startColor = ChangeColour (15, 30, pnce.powerVal);
-		lrH.Lr.endColor = ChangeColour (15, 30, pnce.powerVal);
+		lrH.Lr.startColor = ChangeColour (10, 25, pnce.powerVal);
+		lrH.Lr.endColor = ChangeColour (10, 25, pnce.powerVal);
 
 		//Handles moving of arrow 
 		Quaternion targetRotation = Quaternion.identity;

@@ -10,7 +10,7 @@ public class Pounce : MonoBehaviour {
 	public Character Char;
 	public TestLevel TL;
 	public Rigidbody2D rb;
-
+	public RayCastController RCc;
 
 	public bool isClicked;
 	public GameObject CurrGameobj;
@@ -41,10 +41,12 @@ public class Pounce : MonoBehaviour {
 		TL =GameObject.Find ("GameManager").GetComponent<TestLevel> ();
 		rb = gameObject.GetComponent<Rigidbody2D> ();
 		Char = gameObject.GetComponent<Character> ();
+		RCc = gameObject.GetComponent<RayCastController> ();
 		OriPos = new Vector2 (0, 0);
 		rightBeingUsed = false; 
-		powerVal = 15;
+		powerVal = 10;
 		isIncreasing = false;
+		Char.canJump = true;
 	}
 	
 
@@ -63,7 +65,7 @@ public class Pounce : MonoBehaviour {
 		//if you change the values change them in start too
 		if(rightBeingUsed)
 		{
-			if(powerVal<30)
+			if(powerVal<25)
 			{
 				if (!isIncreasing) {
 					StartCoroutine (IncreasePower ());
@@ -72,7 +74,7 @@ public class Pounce : MonoBehaviour {
 		}
 		else if(!rightBeingUsed)
 		{
-			powerVal = 15;
+			powerVal = 10;
 		}
 			
 		if (Input.GetKeyDown (KeyCode.Return)) {
@@ -80,14 +82,19 @@ public class Pounce : MonoBehaviour {
 		}
 		
 		/////////////////////////////////////////////////////
-		if(inDev.RightTrigger.WasPressed &&rightBeingUsed && (!TL.isTurningRight|| !TL.isTurningLeft))
+		if(inDev.RightTrigger.WasPressed &&rightBeingUsed && (!TL.isTurningRight|| !TL.isTurningLeft) && Char.canJump)
 		{
+			Char.canJump = false;
 			Char.isImmobile = false;
+			Char.canMove = false;
+			Char.isJumping = true;
+			RCc.attachBottom = false;
 			rb.velocity = Vector2.zero;
 			endPos = MF.FindMouse2D ();
 			transform.parent = null;
 			PrevGameobj = CurrGameobj;
 			LaunchCharacter ();
+
 
 
 		}
@@ -104,16 +111,22 @@ public class Pounce : MonoBehaviour {
 		}
 
 
+
 	}
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
+
+		Char.canMove = true;
+		Char.isJumping = false;
+		//Char.isImmobile = true;
 		//Handles the player collision with the environment
 		if(other.gameObject.tag == "Environment" && other.collider.transform.gameObject != CurrGameobj)
 		{
 			Char.isImmobile = true;
 			CurrGameobj = other.collider.gameObject;
 			transform.parent = theLevel.transform;
+
 			//Debug.Break ();
 		}
 	}
@@ -135,7 +148,7 @@ public class Pounce : MonoBehaviour {
 			
 	}
 	//checks level rotation
-	bool CheckLevelRot()
+	public bool CheckLevelRot()
 	{
 		float _rot = theLevel.transform.eulerAngles.z;
 
@@ -150,7 +163,7 @@ public class Pounce : MonoBehaviour {
 		} else {
 			return false;
 		}
-		return false;
+
 	}
 		
 	//Shoots the player in a chosen direction
