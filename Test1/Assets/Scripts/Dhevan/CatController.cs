@@ -70,10 +70,12 @@ public class CatController : MonoBehaviour {
 	void checkMovement(bool isright,bool isleft){
 
 		//charScript.RCC.pnce.rb.velocity = Vector2.zero;
-		if(xInput==0)
-		{
+		if (xInput == 0) {
 			charScript.isRunningRight = false;
 			charScript.isRunningLeft = false;
+			charScript.isIdle = true;
+		} else {
+			charScript.isIdle = false;
 		}
 
 		if(!isright && !isleft)

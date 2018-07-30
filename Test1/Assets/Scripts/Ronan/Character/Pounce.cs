@@ -68,6 +68,13 @@ public class Pounce : MonoBehaviour {
 		//if you change the values change them in start too
 		if(rightBeingUsed)
 		{
+			//Checks if the cat is charging
+			if (!Char.isFalling && !Char.isJumping && (RCc.attachBottomAny || RCc.attachBottom)&& !TL.isTurningLeft && !TL.isTurningRight) {
+				Char.isCharging = true;
+			} else {
+				Char.isCharging = false;
+			}
+
 			if(powerVal<25)
 			{
 				if (!isIncreasing) {
@@ -78,6 +85,7 @@ public class Pounce : MonoBehaviour {
 		else if(!rightBeingUsed)
 		{
 			powerVal = 10;
+			Char.isCharging = false;
 		}
 			
 		if (Input.GetKeyDown (KeyCode.Return)) {

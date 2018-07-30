@@ -30,6 +30,15 @@ public class RayCastController : MonoBehaviour {
 	List<RaycastHit2D> CreateRay()
 	{
 		if (Rays != null) {
+			attachTop = false;
+			attachTopAny = false;
+			attachBottom = false;
+			attachBottomAny = false;
+			attachLeftAny = false;
+			attachLeft = false;
+			attachRight = false;
+			attachRightAny = false;
+
 
 			List<RaycastHit2D> hits = new List<RaycastHit2D>();
 
@@ -43,16 +52,17 @@ public class RayCastController : MonoBehaviour {
 					if (_hit.transform != null && _hit.transform.tag == "Environment") {
 						//print (_hit.transform.gameObject);
 						attachLeft = true;
-					} else {
+					} /*else {
+						
 						attachLeft = false;
-					}
+					}*/
 
 					if (_hit.transform != null && _hit.transform.tag == "Area") {
 						//print (_hit.transform.gameObject);
 						attachLeftAny = true;
-					} else {
+					}/* else {
 						attachLeftAny = false;
-					}
+					}*/
 				}
 				if(_name.Contains("Right"))
 				{
@@ -62,16 +72,16 @@ public class RayCastController : MonoBehaviour {
 						//print (_hit.transform.gameObject);
 						attachRight = true;
 					}
-					else {
+					/*else {
 						attachRight = false;
-					}
+					}*/
 
 					if (_hit.transform != null && _hit.transform.tag == "Area") {
 						//print (_hit.transform.gameObject);
 						attachRightAny = true;
-					} else {
+					}/* else {
 						attachRightAny = false;
-					}
+					}*/
 				}
 				if(_name.Contains("Top"))
 				{
@@ -81,16 +91,16 @@ public class RayCastController : MonoBehaviour {
 						//print (_hit.transform.gameObject);
 						attachTop = true;
 					}
-					else {
+					/*else {
 						attachTop = false;
-					}
+					}*/
 
 					if (_hit.transform != null && _hit.transform.tag == "Area") {
 						//print (_hit.transform.gameObject);
 						attachTopAny = true;
-					} else {
+					} /*else {
 						attachTopAny = false;
-					}
+					}*/
 				}
 				if(_name.Contains("Bottom"))
 				{
@@ -100,16 +110,16 @@ public class RayCastController : MonoBehaviour {
 						//print (_hit.transform.gameObject);
 						attachBottom = true;
 					}
-					else {
+				/*	else {
 						attachBottom = false;
-					}
+					}*/
 
 					if (_hit.transform != null && _hit.transform.tag == "Area") {
 						//print (_hit.transform.gameObject);
 						attachBottomAny = true;
-					} else {
+					} /*else {
 						attachBottomAny = false;
-					}
+					}*/
 				}
 			}
 

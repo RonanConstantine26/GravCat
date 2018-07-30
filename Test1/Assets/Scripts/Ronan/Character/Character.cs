@@ -9,7 +9,10 @@ public class Character : MonoBehaviour {
 	public bool isImmobile;
 	public bool canMove;
 	public bool isTouching;
+	public bool isIdle;
 	public bool isJumping;
+	public bool isFalling;
+	public bool isCharging;
 	public bool isRunningRight;
 	public bool isRunningLeft;
 	public bool canJump;
@@ -52,6 +55,13 @@ public class Character : MonoBehaviour {
 		} else {
 			canMove = false;
 			canJump = false;
+		}
+
+		//Checking if player is falling
+		if (RCC.pnce.rb.velocity.y < -0.2f) {
+			isFalling = true;
+		} else {
+			isFalling = false;
 		}
 	}
 
