@@ -15,6 +15,7 @@ public class Character : MonoBehaviour {
 	public bool canJump;
 	public RayCastController RCC;
 
+
 	public LayerMask lm;
 
 	private Vector3 size;
@@ -22,6 +23,7 @@ public class Character : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		RCC = gameObject.GetComponent<RayCastController> ();
+
 		isImmobile = false;
 		size = transform.localScale;
 		canMove = false;
@@ -40,13 +42,16 @@ public class Character : MonoBehaviour {
 			transform.localRotation = Quaternion.Euler(_Rot);
 		}
 
-		Collider2D col = Physics2D.OverlapCircle (transform.position, 2,lm);
-		if (col != null && col.tag != "Player") {
+		//checks if the player is touching anything
+		//if not then the player cannot move or jump
+		Collider2D col = Physics2D.OverlapCircle (transform.position, 2.3f,lm);
+		if (col != null && col.tag != "Player" && !RCC.attachTop && !RCC.attachTopAny) {
 			canMove = true;
-			print (col.gameObject.name);
-		} else {
+			canJump = true;
 
+		} else {
 			canMove = false;
+			canJump = false;
 		}
 	}
 

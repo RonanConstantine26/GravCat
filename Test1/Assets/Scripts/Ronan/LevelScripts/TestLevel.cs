@@ -53,14 +53,14 @@ public class TestLevel : MonoBehaviour {
 					ChangeCounter (true);
 
 
-
+					RCC.TurnRight ();
 
 					StartCoroutine (RotateRight ());
 
 				}
 				if (RCC.attachLeft && !hasTurned && !isTurningLeft) {
 					ChangeCounter (false);
-
+					RCC.TurnLeft ();
 					StartCoroutine (RotateLeft ());
 
 				}
@@ -86,11 +86,21 @@ public class TestLevel : MonoBehaviour {
 
 
 		if (!isTurningRight && !isTurningLeft) {
-			if(RCC.attachBottom || RCC.attachBottomAny|| RCC.attachTopAny||RCC.attachTop)
+			//Uncomment to jump off roof
+			if(RCC.attachBottom || RCC.attachBottomAny/*|| RCC.attachTopAny||RCC.attachTop*/)
 			{
 				ThePlayer.GetComponent<Character> ().canJump = true;
-				print ("sdtuff");
+
 			}
+		}
+
+		//makes sure the player stays in the right position 
+		if((!isTurningRight || !isTurningLeft ) && rb.velocity== Vector2.zero)
+		{
+			
+			RCC.pnce.Char.isImmobile = false;
+			//caThePlayer.transform.localPosition = RCC.pnce.lastPos;
+
 		}
 
 
@@ -157,7 +167,7 @@ public class TestLevel : MonoBehaviour {
 	//rotates the stage right
 	public IEnumerator RotateRight()
 	{
-		RCC.TurnRight ();
+		
 
 		float step = TimeToRotate * multiplier*Time.deltaTime*2;
 		isTurningRight = true;
@@ -168,7 +178,7 @@ public class TestLevel : MonoBehaviour {
 			Level.transform.Rotate (0, 0, (-45f / step));
 			amount += Mathf.Abs ((-45f / step));
 			//print (amount);
-			Level.transform.position= new Vector3 (0, (10/step*i), 0);
+			Level.transform.position= new Vector3 (0, (11/step*i), 0);
 			yield return new WaitForSecondsRealtime (TimeToRotate/step);
 		}
 
@@ -177,7 +187,7 @@ public class TestLevel : MonoBehaviour {
 			Level.transform.Rotate (0, 0, (-45f / step));
 			amount += Mathf.Abs ((-45f / step));
 			//print (amount-90);
-			Level.transform.position= new Vector3 (0, (10-10/step*i), 0);
+			Level.transform.position= new Vector3 (0, (11-11/step*i), 0);
 			yield return new WaitForSecondsRealtime (TimeToRotate/step);
 			if(Mathf.Abs(amount-90)<=1.5f)
 			{
@@ -199,6 +209,7 @@ public class TestLevel : MonoBehaviour {
 
 
 		Level.transform.position= new Vector3 (0, 0, 0);
+
 		isTurningRight = false;
 		ThePlayer.GetComponent<Character> ().canJump = true;
 
@@ -243,7 +254,7 @@ public class TestLevel : MonoBehaviour {
 	public IEnumerator RotateLeft()
 	{
 		
-		RCC.TurnLeft ();
+
 
 		float step = TimeToRotate * multiplier*Time.deltaTime*2;
 		isTurningLeft = true;
@@ -254,7 +265,7 @@ public class TestLevel : MonoBehaviour {
 			Level.transform.Rotate (0, 0, (45f / step));
 			amount += Mathf.Abs ((45f / step));
 			//print (amount);
-			Level.transform.position= new Vector3 (0, (10/step*i), 0);
+			Level.transform.position= new Vector3 (0, (11/step*i), 0);
 			yield return new WaitForSecondsRealtime (TimeToRotate/step);
 		}
 
@@ -263,7 +274,7 @@ public class TestLevel : MonoBehaviour {
 			Level.transform.Rotate (0, 0, (45f / step));
 			amount += Mathf.Abs ((45f / step));
 			//print (amount-90);
-			Level.transform.position= new Vector3 (0, (10-10/step*i), 0);
+			Level.transform.position= new Vector3 (0, (11-11/step*i), 0);
 			yield return new WaitForSecondsRealtime (TimeToRotate/step);
 			if(Mathf.Abs(amount-90)<=1.5f)
 			{
@@ -282,6 +293,7 @@ public class TestLevel : MonoBehaviour {
 		_tempVec2.z = possibleRots[counter];
 		Level.transform.eulerAngles = _tempVec2;
 		Level.transform.position= new Vector3 (0, 0, 0);
+
 		isTurningLeft = false;
 		ThePlayer.GetComponent<Character> ().canJump = true;
 	}

@@ -20,6 +20,8 @@ public class Pounce : MonoBehaviour {
 	public bool rightBeingUsed;
 	public float powerVal;
 
+	public Vector2 lastPos;
+
 	private Vector2 initPos, endPos;
 	private Vector2 OriPos;
 	private float Power = 900f;
@@ -47,6 +49,7 @@ public class Pounce : MonoBehaviour {
 		powerVal = 10;
 		isIncreasing = false;
 		Char.canJump = true;
+		lastPos = Vector2.zero;
 	}
 	
 
@@ -103,7 +106,6 @@ public class Pounce : MonoBehaviour {
 		//Makes player immobile
 		if (Char.isImmobile) {
 			rb.isKinematic = true;
-			//rb.gravityScale=0;
 			rb.velocity = Vector2.zero;
 		} else if(!Char.isImmobile) {
 			//rb.gravityScale=1;
@@ -116,16 +118,21 @@ public class Pounce : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
-
-		Char.canMove = true;
+		if(RCc.attachBottom ||RCc.attachBottomAny)
+		{
+			Char.canMove = true;
+		}
+		print ("Stuff");
 		Char.isJumping = false;
 		//Char.isImmobile = true;
 		//Handles the player collision with the environment
-		if(other.gameObject.tag == "Environment" && other.collider.transform.gameObject != CurrGameobj)
+		if(other.gameObject.tag == "Environment" && other.collider.transform.gameObject != CurrGameobj &&!RCc.attachTop  )
 		{
+			//lastPos= transform.localPosition;
 			Char.isImmobile = true;
 			CurrGameobj = other.collider.gameObject;
 			transform.parent = theLevel.transform;
+			rb.velocity = Vector2.zero;
 
 			//Debug.Break ();
 		}

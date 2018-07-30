@@ -68,6 +68,8 @@ public class CatController : MonoBehaviour {
 	}
 
 	void checkMovement(bool isright,bool isleft){
+
+		//charScript.RCC.pnce.rb.velocity = Vector2.zero;
 		if(xInput==0)
 		{
 			charScript.isRunningRight = false;
