@@ -50,11 +50,35 @@ public class SwitchScript : MonoBehaviour {
 		}
 	}
 
-	void MoveButtonDown(){
-		this.transform.GetChild (0).transform.localPosition = Vector3.up * 0.1f;
+	void OnTriggerStay2D (Collider2D col){
+		switch (switchBehaviour) {
+		case 0://If one-time active
+			//switchState = true;
+			//MoveButtonDown ();
+			break;
+		case 1://If toggle
+			//switchState = !switchState;
+			break;
+		case 2://If on while player is on, off otherwise
+			if (!switchState) {//If switch is off
+				switchSounds.clip = switchOnSound;
+				switchSounds.Play ();
+			}
+			switchState = true;
+			MoveButtonDown ();
+			break;
+		default:
+			break;
+		}
 	}
 
+
+
 	void MoveButtonUp(){
-		this.transform.GetChild (0).transform.localPosition = Vector3.up * 0.25f;
+		this.transform.GetChild (0).transform.localPosition = Vector3.up * 0.15f;
+	}
+
+	void MoveButtonDown(){
+		this.transform.GetChild (0).transform.localPosition = Vector3.up * 0.05f;
 	}
 }
