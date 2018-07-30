@@ -17,7 +17,7 @@ public class DisappearingBlockController : MonoBehaviour {
 	void Update () {
 		if (disappearUponTouch == true) {
 			scaleDownAndDisappear ();
-			this.transform.Rotate (new Vector3 (0, 0, 100f) * Time.deltaTime);
+			this.transform.Rotate (new Vector3 (0, 0, 250f) * Time.deltaTime);
 		}
 	}
 
