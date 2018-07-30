@@ -1,6 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 56278ea572a0b424f8d009ad27b31706
 folderAsset: yes
+=======
+guid: 11ab710043e0d224bb56ac345536c2ed
+folderAsset: yes
+timeCreated: 1532634034
+licenseType: Free
+>>>>>>> Dhevan
 DefaultImporter:
   externalObjects: {}
   userData: 
