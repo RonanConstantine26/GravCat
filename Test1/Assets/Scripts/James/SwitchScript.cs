@@ -80,9 +80,14 @@ public class SwitchScript : MonoBehaviour {
 			break;
 		case 1://If toggle
 			//switchState = !switchState;
+			switchSounds.clip = switchOffSound;
+			switchSounds.Play ();
+
+			MoveButtonUp ();
 			break;
 		case 2://If on while player is on, off otherwise
-			
+			switchSounds.clip = switchOffSound;
+			switchSounds.Play ();
 			switchState = false;
 			MoveButtonUp ();
 			break;
