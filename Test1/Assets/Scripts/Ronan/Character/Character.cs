@@ -68,6 +68,8 @@ public class Character : MonoBehaviour {
 		if ((isImmobile  && RCC.attachTop) /*|| (canJump &&(RCC.attachLeftAny||RCC.attachLeftBox||RCC.attachLeft) &&(RCC.attachRight||RCC.attachRightAny||RCC.attachRightBox))*/) {
 			isImmobile = false;
 		}
+
+
 	}
 
 	void OnCollisionExit2D(Collision2D other)

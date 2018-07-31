@@ -14,7 +14,7 @@ public class SceneController : MonoBehaviour {
 	}
 
 	public void OnClickDemoScene1(){
-		SceneManager.LoadScene ("DemoScene1");
+		SceneManager.LoadScene ("Scene1");
 	}
 	public void OnClickDemoScene2(){
 		SceneManager.LoadScene ("DemoScene2");
