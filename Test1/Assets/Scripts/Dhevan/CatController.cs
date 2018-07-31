@@ -59,10 +59,10 @@ public class CatController : MonoBehaviour {
 		{
 			SpriteRenderer SR = GetComponent<SpriteRenderer>();
 			if (xInput < 0f) {
-				SR.flipX = true;
+				SR.flipX = false;
 			}
 			else {
-				SR.flipX = false;
+				SR.flipX = true;
 			}
 		}
 	}
