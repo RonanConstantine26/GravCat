@@ -29,16 +29,16 @@ public class CatController : MonoBehaviour {
 
 		if(charScript.canMove && pnce.CheckLevelRot())
 		{
-			if(!RCC.attachRight && !RCC.attachLeft && !RCC.attachRightAny&& !RCC.attachLeftAny)
+			if(!RCC.attachRight && !RCC.attachLeft && !RCC.attachRightAny&& !RCC.attachLeftAny && !RCC.attachRightBox && !RCC.attachLeftBox )
 			{
 				checkMovement (false,false);
 				print ("1 in");
 			}
-			if(RCC.attachRight || RCC.attachRightAny)
+			if(RCC.attachRight || RCC.attachRightAny || RCC.attachRightBox)
 			{
 				checkMovement (false, true);
 			}
-			if(RCC.attachLeft || RCC.attachLeftAny)
+			if(RCC.attachLeft || RCC.attachLeftAny || RCC.attachLeftBox)
 			{
 				checkMovement (true, false);
 			}
@@ -69,7 +69,7 @@ public class CatController : MonoBehaviour {
 
 	void checkMovement(bool isright,bool isleft){
 
-		//charScript.RCC.pnce.rb.velocity = Vector2.zero;
+
 		if (xInput == 0) {
 			charScript.isRunningRight = false;
 			charScript.isRunningLeft = false;

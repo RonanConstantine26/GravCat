@@ -69,7 +69,7 @@ public class Pounce : MonoBehaviour {
 		if(rightBeingUsed)
 		{
 			//Checks if the cat is charging
-			if (!Char.isFalling && !Char.isJumping && (RCc.attachBottomAny || RCc.attachBottom)&& !TL.isTurningLeft && !TL.isTurningRight) {
+			if (!Char.isFalling && !Char.isJumping && (RCc.attachBottomAny || RCc.attachBottom||RCc.attachBottomBox)&& !TL.isTurningLeft && !TL.isTurningRight) {
 				Char.isCharging = true;
 			} else {
 				Char.isCharging = false;
