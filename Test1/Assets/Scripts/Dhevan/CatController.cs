@@ -25,7 +25,13 @@ public class CatController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		checkDirection ();
+
+		if (RCC.pnce.Char.isJumping||RCC.pnce.Char.isFalling) {
+			checkDirectionJump ();
+		} else {
+			checkDirection ();
+		}
+
 
 		if(charScript.canMove && pnce.CheckLevelRot())
 		{
@@ -59,6 +65,22 @@ public class CatController : MonoBehaviour {
 		{
 			//SpriteRenderer SR = GetComponent<SpriteRenderer>();
 			if (xInput < 0f) {
+				SR.flipX = false;
+			}
+			else {
+				SR.flipX = true;
+			}
+		}
+	}
+
+	public void checkDirectionJump(){
+		xInput = joystick.LeftStick.X;  
+		yInput = joystick.LeftStick.Y;
+
+		if (Mathf.Abs(RCC.pnce.rb.velocity.x ) != 0f)
+		{
+			//SpriteRenderer SR = GetComponent<SpriteRenderer>();
+			if (RCC.pnce.rb.velocity.x < 0f) {
 				SR.flipX = false;
 			}
 			else {
