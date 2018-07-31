@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50781575773111406}
   m_Layer: 0
   m_Name: NormalBlock3
-  m_TagString: Box
+  m_TagString: Area
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

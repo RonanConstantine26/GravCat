@@ -13,7 +13,6 @@ public class RayCastController : MonoBehaviour {
 
 	public bool attachRight,attachLeft,attachTop,attachBottom;
 	public bool attachRightAny,attachLeftAny,attachTopAny,attachBottomAny;
-	public bool attachRightBox,attachLeftBox,attachTopBox,attachBottomBox;
 
 	// Use this for initialization
 	void Start () {
@@ -39,10 +38,6 @@ public class RayCastController : MonoBehaviour {
 			attachLeft = false;
 			attachRight = false;
 			attachRightAny = false;
-			attachTopBox = false;
-			attachRightBox = false;
-			attachLeftBox = false;
-			attachBottomBox = false;
 
 
 			List<RaycastHit2D> hits = new List<RaycastHit2D>();
@@ -55,19 +50,19 @@ public class RayCastController : MonoBehaviour {
 					RaycastHit2D _hit = Physics2D.Raycast (ray.transform.position, Vector2.left,0.3f);
 					hits.Add (_hit);
 					if (_hit.transform != null && _hit.transform.tag == "Environment") {
-						
+						//print (_hit.transform.gameObject);
 						attachLeft = true;
-					} 
+					} /*else {
+						
+						attachLeft = false;
+					}*/
 
 					if (_hit.transform != null && _hit.transform.tag == "Area") {
 						//print (_hit.transform.gameObject);
 						attachLeftAny = true;
-					}
-
-					if (_hit.transform != null && _hit.transform.tag == "Box") {
-						//print (_hit.transform.gameObject);
-						attachLeftBox = true;
-					}
+					}/* else {
+						attachLeftAny = false;
+					}*/
 				}
 				if(_name.Contains("Right"))
 				{
@@ -77,15 +72,16 @@ public class RayCastController : MonoBehaviour {
 						//print (_hit.transform.gameObject);
 						attachRight = true;
 					}
-						
-					else if (_hit.transform != null && _hit.transform.tag == "Area") {
+					/*else {
+						attachRight = false;
+					}*/
+
+					if (_hit.transform != null && _hit.transform.tag == "Area") {
 						//print (_hit.transform.gameObject);
 						attachRightAny = true;
-					}
-					else if (_hit.transform != null && _hit.transform.tag == "Box") {
-						//print (_hit.transform.gameObject);
-						attachRightBox = true;
-					}
+					}/* else {
+						attachRightAny = false;
+					}*/
 				}
 				if(_name.Contains("Top"))
 				{
@@ -95,34 +91,35 @@ public class RayCastController : MonoBehaviour {
 						//print (_hit.transform.gameObject);
 						attachTop = true;
 					}
+					/*else {
+						attachTop = false;
+					}*/
 
 					if (_hit.transform != null && _hit.transform.tag == "Area") {
 						//print (_hit.transform.gameObject);
 						attachTopAny = true;
-					}
-
-					if (_hit.transform != null && _hit.transform.tag == "Box") {
-						//print (_hit.transform.gameObject);
-						attachTopBox = true;
-					}
+					} /*else {
+						attachTopAny = false;
+					}*/
 				}
 				if(_name.Contains("Bottom"))
 				{
 					RaycastHit2D _hit = Physics2D.Raycast (ray.transform.position, Vector2.down,0.3f);
 					hits.Add (_hit);
 					if (_hit.transform != null && _hit.transform.tag == "Environment" ) {
+						//print (_hit.transform.gameObject);
 						attachBottom = true;
 					}
-
+				/*	else {
+						attachBottom = false;
+					}*/
 
 					if (_hit.transform != null && _hit.transform.tag == "Area") {
-						attachBottomAny = true;
-					}
-
-					if (_hit.transform != null && _hit.transform.tag == "Box") {
 						//print (_hit.transform.gameObject);
-						attachBottomBox = true;
-					}
+						attachBottomAny = true;
+					} /*else {
+						attachBottomAny = false;
+					}*/
 				}
 			}
 

@@ -70,13 +70,13 @@ public class TestLevel : MonoBehaviour {
 			if (!RCC.attachTop && !RCC.attachBottom) {
 				if (RCC.attachRight && !hasTurned) {
 					
-
+					BouncePlayer(true);
 					StartCoroutine (RotateRightSmall ());
 
 				}
 				if (RCC.attachLeft && !hasTurned) {
 
-
+					BouncePlayer(false);
 					StartCoroutine (RotateLeftSmall ());
 
 				}
@@ -86,8 +86,6 @@ public class TestLevel : MonoBehaviour {
 
 
 		if (!isTurningRight && !isTurningLeft) {
-
-			RoundAngle ();
 			//Uncomment to jump off roof
 			if(RCC.attachBottom || RCC.attachBottomAny/*|| RCC.attachTopAny||RCC.attachTop*/)
 			{
@@ -97,13 +95,13 @@ public class TestLevel : MonoBehaviour {
 		}
 
 		//makes sure the player stays in the right position 
-		/*if((!isTurningRight || !isTurningLeft ) && rb.velocity== Vector2.zero)
+		if((!isTurningRight || !isTurningLeft ) && rb.velocity== Vector2.zero)
 		{
 			
 			RCC.pnce.Char.isImmobile = false;
 			//caThePlayer.transform.localPosition = RCC.pnce.lastPos;
 
-		}*/
+		}
 
 
 	}
@@ -214,7 +212,6 @@ public class TestLevel : MonoBehaviour {
 
 		isTurningRight = false;
 		ThePlayer.GetComponent<Character> ().canJump = true;
-		RoundAngle ();
 
 
 	}
@@ -222,7 +219,6 @@ public class TestLevel : MonoBehaviour {
 //	rotates the stage only a bit and then returns it to its orignal rotation
 	public IEnumerator RotateRightSmall()
 	{
-		BouncePlayer(true);
 		float step = TimeToRotateSmall * multiplier*Time.deltaTime*2;
 		isTurningRight = true;
 		float amount = 0;
@@ -232,7 +228,7 @@ public class TestLevel : MonoBehaviour {
 			Level.transform.Rotate (0, 0, (-3f / step));
 			amount += Mathf.Abs ((-3f / step));
 			//print (amount);
-			Level.transform.position= new Vector3 (0, (1f/step*i), 0);
+			Level.transform.position= new Vector3 (0, (0.8f/step*i), 0);
 			yield return new WaitForSecondsRealtime (TimeToRotateSmall/step);
 		}
 
@@ -241,14 +237,13 @@ public class TestLevel : MonoBehaviour {
 			Level.transform.Rotate (0, 0, (3f / step));
 			amount += Mathf.Abs ((3f / step));
 			//print (amount-90);
-			Level.transform.position= new Vector3 (0, (1f-1f/step*i), 0);
+			Level.transform.position= new Vector3 (0, (0.8f-0.8f/step*i), 0);
 			yield return new WaitForSecondsRealtime (TimeToRotateSmall/step);
 
 		}
 
 		isTurningRight = false;
 		ThePlayer.GetComponent<Character> ().canJump = true;
-		RoundAngle ();
 
 	}
 
@@ -301,13 +296,12 @@ public class TestLevel : MonoBehaviour {
 
 		isTurningLeft = false;
 		ThePlayer.GetComponent<Character> ().canJump = true;
-		RoundAngle ();
 	}
 	//rotates the stage only a bit and then returns it to its orignal rotation
 	public IEnumerator RotateLeftSmall()
 	{
 		
-		BouncePlayer(false);
+
 		float step = TimeToRotateSmall * multiplier*Time.deltaTime*2;
 		//print (step);
 		isTurningLeft = true;
@@ -318,7 +312,7 @@ public class TestLevel : MonoBehaviour {
 			Level.transform.Rotate (0, 0, (3f / step));
 			amount += (3f / step);
 			//print (amount);
-			Level.transform.position= new Vector3 (0, (1f/step*i), 0);
+			Level.transform.position= new Vector3 (0, (0.8f/step*i), 0);
 			yield return new WaitForSecondsRealtime (TimeToRotateSmall/step);
 		}
 
@@ -327,24 +321,14 @@ public class TestLevel : MonoBehaviour {
 			Level.transform.Rotate (0, 0, (-3f / step));
 			amount += (-3f / step);
 			//print (amount);
-			Level.transform.position= new Vector3 (0, (1f-1f/step*i), 0);
+			Level.transform.position= new Vector3 (0, (0.8f-0.8f/step*i), 0);
 			yield return new WaitForSecondsRealtime (TimeToRotateSmall/step);
 
 		}
 
 		isTurningLeft = false;
 		ThePlayer.GetComponent<Character> ().canJump = true;
-		RoundAngle ();
 
-	}
-
-	public void RoundAngle()
-	{
-		float angle = Level.transform.eulerAngles.z;
-
-		angle = Mathf.Round (angle / 90) * 90;
-		Level.transform.eulerAngles = new Vector3 (transform.eulerAngles.x, transform.eulerAngles.y, angle);
-		print (angle);
 	}
 
 
