@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4798328714810692}
   - component: {fileID: 33989954116201934}
-  - component: {fileID: 65825987471880386}
   - component: {fileID: 23838105796075376}
   m_Layer: 0
   m_Name: Cube
@@ -38,7 +37,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4513583335117884}
   - component: {fileID: 33263658171691618}
-  - component: {fileID: 65004482664465092}
   - component: {fileID: 23832967332043108}
   m_Layer: 0
   m_Name: Cube (1)
@@ -59,6 +57,7 @@ GameObject:
   - component: {fileID: 114752379052791534}
   - component: {fileID: 82268303992649246}
   - component: {fileID: 50531163374401696}
+  - component: {fileID: 61031585714340802}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -73,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1753074650048528}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6000023, y: -0.49000025, z: 0.06542969}
+  m_LocalPosition: {x: 0.6000023, y: -0.541, z: 0.06542969}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4513583335117884}
@@ -196,7 +195,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1753074650048528}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -209,6 +208,31 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &61031585714340802
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1753074650048528}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0057082474, y: 0.06564504}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.77166945, y: 0.14946878}
+  m_EdgeRadius: 0
 --- !u!61 &61946516189333908
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -234,30 +258,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7800102, y: 0.16655064}
   m_EdgeRadius: 0
---- !u!65 &65004482664465092
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1116565977103750}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65825987471880386
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1040592719457398}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &82268303992649246
 AudioSource:
   m_ObjectHideFlags: 1
@@ -352,5 +352,5 @@ MonoBehaviour:
   switchBehaviour: 0
   switchState: 0
   anyCanTrigger: 0
-  switchOnSound: {fileID: 8300000, guid: 1071d61c582792345878c8183a589b9f, type: 3}
-  switchOffSound: {fileID: 8300000, guid: 7df4f29ff62afe4409fbc219ab62a9e7, type: 3}
+  switchOnSound: {fileID: 8300000, guid: 5c5e4588da2d2174ab76fa9016bac6df, type: 3}
+  switchOffSound: {fileID: 8300000, guid: 2cf7981831e5e514ab186d8834ab4e54, type: 3}
