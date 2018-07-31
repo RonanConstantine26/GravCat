@@ -95,13 +95,13 @@ public class TestLevel : MonoBehaviour {
 		}
 
 		//makes sure the player stays in the right position 
-		if((!isTurningRight || !isTurningLeft ) && rb.velocity== Vector2.zero)
+		/*if((!isTurningRight || !isTurningLeft ) && rb.velocity== Vector2.zero)
 		{
 			
 			RCC.pnce.Char.isImmobile = false;
 			//caThePlayer.transform.localPosition = RCC.pnce.lastPos;
 
-		}
+		}*/
 
 
 	}
