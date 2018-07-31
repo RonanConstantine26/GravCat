@@ -76,6 +76,7 @@ public class CatController : MonoBehaviour {
 			charScript.isIdle = true;
 		} else {
 			charScript.isIdle = false;
+			//charScript.RCC.pnce.rb.velocity = new Vector2(0,RCC.pnce.rb.velocity.y);
 		}
 
 		if(!isright && !isleft)

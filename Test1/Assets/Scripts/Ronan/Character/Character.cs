@@ -63,6 +63,10 @@ public class Character : MonoBehaviour {
 		} else {
 			isFalling = false;
 		}
+
+		if (isImmobile  && RCC.attachTop) {
+			isImmobile = false;
+		}
 	}
 
 	void OnCollisionExit2D(Collision2D other)
