@@ -6,7 +6,7 @@ using UnityEngine;
 public class RayCastController : MonoBehaviour {
 
 	public GameObject[] Rays;
-	public GameObject RayHolder,AimerHolder;
+	public GameObject RayHolder,AimerHolder,Cat;
 	public Pounce pnce;
 
 	public TestLevel TL;
@@ -24,6 +24,13 @@ public class RayCastController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		List<RaycastHit2D> hits =CreateRay ();
+		if(!attachRight&& !attachLeft&&!attachTop&&!attachBottom
+			&&!attachRightAny&&!attachLeftAny&&!attachTopAny&&!attachBottomAny
+			 &&!attachRightBox&&!attachLeftBox&&!attachTopBox&&!attachBottomBox)
+		{
+
+			pnce.Char.isImmobile = false;
+		}
 	}
 
 	//raycasts to find walls
@@ -52,7 +59,7 @@ public class RayCastController : MonoBehaviour {
 
 				if(_name.Contains("Left"))
 				{
-					RaycastHit2D _hit = Physics2D.Raycast (ray.transform.position, Vector2.left,0.3f);
+					RaycastHit2D _hit = Physics2D.Raycast (ray.transform.position, Vector2.left,0.45f);
 					hits.Add (_hit);
 					if (_hit.transform != null && _hit.transform.tag == "Environment") {
 
@@ -71,7 +78,7 @@ public class RayCastController : MonoBehaviour {
 				}
 				if(_name.Contains("Right"))
 				{
-					RaycastHit2D _hit = Physics2D.Raycast (ray.transform.position, Vector2.right,0.3f);
+					RaycastHit2D _hit = Physics2D.Raycast (ray.transform.position, Vector2.right,0.45f);
 					hits.Add (_hit);
 					if (_hit.transform != null && (_hit.transform.tag == "Environment" ) ){
 						//print (_hit.transform.gameObject);
@@ -89,7 +96,7 @@ public class RayCastController : MonoBehaviour {
 				}
 				if(_name.Contains("Top"))
 				{
-					RaycastHit2D _hit = Physics2D.Raycast (ray.transform.position, Vector2.up,0.3f);
+					RaycastHit2D _hit = Physics2D.Raycast (ray.transform.position, Vector2.up,0.45f);
 					hits.Add (_hit);
 					if (_hit.transform != null && _hit.transform.tag == "Environment" ) {
 						//print (_hit.transform.gameObject);
@@ -108,7 +115,7 @@ public class RayCastController : MonoBehaviour {
 				}
 				if(_name.Contains("Bottom"))
 				{
-					RaycastHit2D _hit = Physics2D.Raycast (ray.transform.position, Vector2.down,0.3f);
+					RaycastHit2D _hit = Physics2D.Raycast (ray.transform.position, Vector2.down,0.45f);
 					hits.Add (_hit);
 					if (_hit.transform != null && _hit.transform.tag == "Environment" ) {
 						attachBottom = true;
@@ -138,6 +145,7 @@ public class RayCastController : MonoBehaviour {
 	{
 		RayHolder.transform.Rotate (0, 0, 90f);
 		AimerHolder.transform.Rotate (0, 0, 90f);
+		Cat.transform.Rotate (0, 0, 90f);
 		print("turned right");
 	}
 	//turns raycast holder & Aimer Holder left
@@ -145,6 +153,7 @@ public class RayCastController : MonoBehaviour {
 	{
 		RayHolder.transform.Rotate (0, 0, -90f);
 		AimerHolder.transform.Rotate (0, 0, -90f);
+		Cat.transform.Rotate (0, 0, -90f);
 		print ("turned left");
 	}
 }

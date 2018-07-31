@@ -11,7 +11,7 @@ public class CatController : MonoBehaviour {
 	private Pounce pnce;
 
 	public float moveSpeed = 10f; 
-	private float xInput, yInput;
+	public float xInput, yInput;
 
 	public SpriteRenderer SR;
 
@@ -57,7 +57,7 @@ public class CatController : MonoBehaviour {
 
 		if (Mathf.Abs(xInput) != 0f)
 		{
-			SpriteRenderer SR = GetComponent<SpriteRenderer>();
+			//SpriteRenderer SR = GetComponent<SpriteRenderer>();
 			if (xInput < 0f) {
 				SR.flipX = false;
 			}
@@ -74,6 +74,7 @@ public class CatController : MonoBehaviour {
 			charScript.isRunningRight = false;
 			charScript.isRunningLeft = false;
 			charScript.isIdle = true;
+			//print (zero);
 		} else {
 			charScript.isIdle = false;
 			//charScript.RCC.pnce.rb.velocity = new Vector2(0,RCC.pnce.rb.velocity.y);

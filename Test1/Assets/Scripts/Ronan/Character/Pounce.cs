@@ -105,6 +105,7 @@ public class Pounce : MonoBehaviour {
 			transform.parent = null;
 			PrevGameobj = CurrGameobj;
 			LaunchCharacter ();
+			print ("Jumped");
 
 
 
@@ -120,21 +121,31 @@ public class Pounce : MonoBehaviour {
 			rb.isKinematic= false;
 		}
 
+		if(!rightBeingUsed)
+		{
+			Char.isRunningRight = false;
+			Char.isRunningLeft = false;
+		}
+
+		if(Char.isJumping && (RCc.attachLeft||RCc.attachRight))
+		{
+
+		}
+
 
 
 	}
 
 	void OnCollisionEnter2D(Collision2D other)
 	{
-		if(RCc.attachBottom ||RCc.attachBottomAny)
+		if(RCc.attachBottom ||RCc.attachBottomAny|| RCc.attachBottomBox)
 		{
 			Char.canMove = true;
 		}
-		print ("Stuff");
 		Char.isJumping = false;
 		//Char.isImmobile = true;
 		//Handles the player collision with the environment
-		if(other.gameObject.tag == "Environment" && other.collider.transform.gameObject != CurrGameobj &&!RCc.attachTop  )
+		if(other.gameObject.tag == "Environment" && other.collider.transform.gameObject != CurrGameobj &&!RCc.attachTop&&(Mathf.Abs(TL.GroundLevel.transform.position.y - transform.position.y)>13.5)  )
 		{
 			//lastPos= transform.localPosition;
 			Char.isImmobile = true;
@@ -145,9 +156,12 @@ public class Pounce : MonoBehaviour {
 			//Debug.Break ();
 		}
 	}
-	void OnCollisionExit2D(Collision2D other)
+	void OnCollisionStay2D(Collision2D other)
 	{
-		
+		if(RCc.attachBottom ||RCc.attachBottomAny|| RCc.attachBottomBox)
+		{
+			Char.canMove = true;
+		}
 	}
 
 	//updates world from the controller input
