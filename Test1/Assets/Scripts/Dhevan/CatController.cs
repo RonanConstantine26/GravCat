@@ -29,16 +29,16 @@ public class CatController : MonoBehaviour {
 
 		if(charScript.canMove && pnce.CheckLevelRot())
 		{
-			if(!RCC.attachRight && !RCC.attachLeft && !RCC.attachRightAny&& !RCC.attachLeftAny)
+			if(!RCC.attachRight && !RCC.attachLeft && !RCC.attachRightAny&& !RCC.attachLeftAny && !RCC.attachLeftBox && !RCC.attachRightBox)
 			{
 				checkMovement (false,false);
-				print ("1 in");
+
 			}
-			if(RCC.attachRight || RCC.attachRightAny)
+			if(RCC.attachRight || RCC.attachRightAny||RCC.attachRightBox)
 			{
 				checkMovement (false, true);
 			}
-			if(RCC.attachLeft || RCC.attachLeftAny)
+			if(RCC.attachLeft || RCC.attachLeftAny ||RCC.attachLeftBox)
 			{
 				checkMovement (true, false);
 			}

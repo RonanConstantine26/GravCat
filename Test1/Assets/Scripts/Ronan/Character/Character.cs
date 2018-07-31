@@ -35,6 +35,8 @@ public class Character : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+	//	print (Mathf.Round(82f/90)*90);
 		
 		if (isImmobile) {
 			Vector3 _Rot = new Vector3 (0, 0, /*-RCC.pnce.theLevel.transform.rotation.eulerAngles.z*/ 0);
@@ -48,9 +50,14 @@ public class Character : MonoBehaviour {
 		//checks if the player is touching anything
 		//if not then the player cannot move or jump
 		Collider2D col = Physics2D.OverlapCircle (transform.position, 2.3f,lm);
-		if (col != null && col.tag != "Player" && !RCC.attachTop && !RCC.attachTopAny) {
+		if (col != null && col.tag != "Player" && (!RCC.attachTop && !RCC.attachTopAny )) {
 			canMove = true;
 			canJump = true;
+			if(RCC.attachTop || RCC.attachTopAny)
+			{
+				canJump = false;
+				canMove = false;
+			}
 
 		} else {
 			canMove = false;
@@ -62,6 +69,14 @@ public class Character : MonoBehaviour {
 			isFalling = true;
 		} else {
 			isFalling = false;
+		}
+
+		if(isImmobile && (RCC.attachTop))
+		{
+			isImmobile = false;
+		}
+		if (isImmobile && isIdle && !RCC.TL.isTurningLeft && !RCC.TL.isTurningRight) {
+			isImmobile = false;
 		}
 	}
 
