@@ -46,7 +46,7 @@ public class Pounce : MonoBehaviour {
 		RCc = gameObject.GetComponent<RayCastController> ();
 		OriPos = new Vector2 (0, 0);
 		rightBeingUsed = false; 
-		powerVal = 10;
+		powerVal = 7;
 		isIncreasing = false;
 		Char.canJump = true;
 		lastPos = Vector2.zero;
@@ -75,7 +75,7 @@ public class Pounce : MonoBehaviour {
 				Char.isCharging = false;
 			}
 
-			if(powerVal<25)
+			if(powerVal<22)
 			{
 				if (!isIncreasing) {
 					StartCoroutine (IncreasePower ());
@@ -84,7 +84,7 @@ public class Pounce : MonoBehaviour {
 		}
 		else if(!rightBeingUsed)
 		{
-			powerVal = 10;
+			powerVal = 7;
 			Char.isCharging = false;
 		}
 			
