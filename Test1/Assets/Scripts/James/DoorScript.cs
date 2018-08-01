@@ -8,15 +8,15 @@ public class DoorScript : MonoBehaviour {
 
 	public bool areInputsAND = true;	//If true, all switches activate this, if false any switch will activate this
 
-	bool isActive = false;
+	public bool isActive = false;
 
-	SpriteRenderer sprite;
-	MeshRenderer myMesh;
+	public SpriteRenderer sprite;
+	//MeshRenderer myMesh;
 	Collider2D myCol;
 
 	// Use this for initialization
 	void Start () {
-		myMesh = gameObject.GetComponent<MeshRenderer> ();
+		//myMesh = gameObject.GetComponent<MeshRenderer> ();
 		myCol = gameObject.GetComponent<BoxCollider2D> ();
 	}
 	
@@ -57,14 +57,16 @@ public class DoorScript : MonoBehaviour {
 
 	void CloseDoor () {
 		//sprite.enabled = false;
-		myMesh.enabled = false;
+		//myMesh.enabled = false;
 		myCol.enabled = false;
+		sprite.enabled = false;
 	}
 
 	void OpenDoor () {
 		//sprite.enabled = true;
-		myMesh.enabled = true;
+		//myMesh.enabled = true;
 		myCol.enabled = true;
+		sprite.enabled = true;
 	}
 
 	void DrawRayToSwitches (){
