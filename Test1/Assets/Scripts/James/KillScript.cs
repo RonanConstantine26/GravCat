@@ -8,6 +8,7 @@ public class KillScript : MonoBehaviour {
 	private float startRestartTime;
 	private bool gameOver = false;
 
+
 	// Use this for initialization
 	void Start () {
 		gameOver = false;
@@ -23,9 +24,18 @@ public class KillScript : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D other) {
 		if (other.gameObject.tag == "Player") {
-			Destroy (other.gameObject);
-			startRestartTime = Time.time;
-			gameOver = true;
+            other.gameObject.GetComponent<Character>().isDead = true;
+            other.gameObject.GetComponent<Character>().canMove = false;
+            other.gameObject.GetComponent<CatController>().enabled = false;
+            StartCoroutine(Die(other));
 		}
 	}
+
+    IEnumerator Die(Collision2D other)
+    {
+        yield return new WaitForSecondsRealtime(1f);
+        //Destroy(other.gameObject);
+        startRestartTime = Time.time;
+        gameOver = true;
+    }
 }

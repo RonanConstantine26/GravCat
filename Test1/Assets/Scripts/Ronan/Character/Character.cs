@@ -15,6 +15,7 @@ public class Character : MonoBehaviour {
 	public bool isCharging;
 	public bool isRunningRight;
 	public bool isRunningLeft;
+    public bool isDead;
 	public bool canJump;
 	public RayCastController RCC;
 
@@ -31,6 +32,7 @@ public class Character : MonoBehaviour {
 		size = transform.localScale;
 		canMove = false;
 		isJumping = false;
+        isDead = false;
 	}
 	
 	// Update is called once per frame
