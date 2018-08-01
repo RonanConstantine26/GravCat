@@ -287,6 +287,7 @@ GameObject:
   - component: {fileID: 4593244543263646}
   - component: {fileID: 212636964155475618}
   - component: {fileID: 95771272216955658}
+  - component: {fileID: 114176054212473952}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -754,7 +755,7 @@ MonoBehaviour:
   moveSpeed: 10
   xInput: 0
   yInput: 0
-  SR: {fileID: 212285307424236820}
+  SR: {fileID: 212636964155475618}
 --- !u!114 &114163992625077868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -773,6 +774,19 @@ MonoBehaviour:
   minSize: 8
   maxSize: 11
   ArrowSize: 0
+--- !u!114 &114176054212473952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1699403167558280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad5420c0903199f4898ca1410cf01cb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 95771272216955658}
+  charScript: {fileID: 114868446102576266}
 --- !u!114 &114529523042477730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -817,6 +831,7 @@ MonoBehaviour:
   isCharging: 0
   isRunningRight: 0
   isRunningLeft: 0
+  isDead: 0
   canJump: 0
   RCC: {fileID: 0}
   lm:
@@ -848,7 +863,7 @@ MonoBehaviour:
   - {fileID: 1030045483886190}
   RayHolder: {fileID: 1056462171797920}
   AimerHolder: {fileID: 1512089897526744}
-  Cat: {fileID: 0}
+  Cat: {fileID: 1699403167558280}
   pnce: {fileID: 0}
   TL: {fileID: 0}
   attachRight: 0

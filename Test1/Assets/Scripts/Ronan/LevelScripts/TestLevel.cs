@@ -17,6 +17,7 @@ public class TestLevel : MonoBehaviour {
 	public Rigidbody2D rb;
 
 	public GameObject GroundLevel;
+	public GameObject Bg;
 
 	private float TimeToRotate = 0.6f;
 	private float TimeToRotateSmall = 0.3f;
@@ -179,6 +180,7 @@ public class TestLevel : MonoBehaviour {
 			amount += Mathf.Abs ((-45f / step));
 			//print (amount);
 			Level.transform.position= new Vector3 (0, (11/step*i), 0);
+			Bg.transform.Translate (new Vector2((-3/step)*i,0)); 
 			yield return new WaitForSecondsRealtime (TimeToRotate/step);
 		}
 
@@ -188,6 +190,7 @@ public class TestLevel : MonoBehaviour {
 			amount += Mathf.Abs ((-45f / step));
 			//print (amount-90);
 			Level.transform.position= new Vector3 (0, (11-11/step*i), 0);
+			Bg.transform.Translate (new Vector2((-3/step)*i,0)); 
 			yield return new WaitForSecondsRealtime (TimeToRotate/step);
 			if(Mathf.Abs(amount-90)<=1.5f)
 			{
@@ -265,7 +268,8 @@ public class TestLevel : MonoBehaviour {
 			Level.transform.Rotate (0, 0, (45f / step));
 			amount += Mathf.Abs ((45f / step));
 			//print (amount);
-			Level.transform.position= new Vector3 (0, (11/step*i), 0);
+			Level.transform.position= new Vector3 (/*(-3/step)*i*/0, (11/step*i), 0);
+			Bg.transform.Translate (new Vector2((3/step)*i,0)); 
 			yield return new WaitForSecondsRealtime (TimeToRotate/step);
 		}
 
@@ -274,7 +278,8 @@ public class TestLevel : MonoBehaviour {
 			Level.transform.Rotate (0, 0, (45f / step));
 			amount += Mathf.Abs ((45f / step));
 			//print (amount-90);
-			Level.transform.position= new Vector3 (0, (11-11/step*i), 0);
+			Level.transform.position= new Vector3 (/*(-3/step)*i*/0, (11-11/step*i), 0);
+			Bg.transform.Translate (new Vector2((3/step)*i,0)); 
 			yield return new WaitForSecondsRealtime (TimeToRotate/step);
 			if(Mathf.Abs(amount-90)<=1.5f)
 			{
