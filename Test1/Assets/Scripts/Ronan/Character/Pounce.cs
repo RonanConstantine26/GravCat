@@ -162,6 +162,7 @@ public class Pounce : MonoBehaviour {
 		{
 			Char.canMove = true;
 		}
+		Char.isJumping = false;
 	}
 
 	//updates world from the controller input
