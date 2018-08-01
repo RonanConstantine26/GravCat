@@ -72,6 +72,29 @@ public class SwitchScript : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerExit2D (Collider2D col){
+		switch (switchBehaviour) {
+		case 0://If one-time active
+			//switchState = true;
+			//MoveButtonDown ();
+			break;
+		case 1://If toggle
+			//switchState = !switchState;
+			switchSounds.clip = switchOffSound;
+			switchSounds.Play ();
+
+			MoveButtonUp ();
+			break;
+		case 2://If on while player is on, off otherwise
+			switchSounds.clip = switchOffSound;
+			switchSounds.Play ();
+			switchState = false;
+			MoveButtonUp ();
+			break;
+		default:
+			break;
+		}
+	}
 
 
 	void MoveButtonUp(){

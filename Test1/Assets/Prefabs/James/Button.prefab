@@ -351,6 +351,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   switchBehaviour: 0
   switchState: 0
-  anyCanTrigger: 0
+  anyCanTrigger: 1
   switchOnSound: {fileID: 8300000, guid: 5c5e4588da2d2174ab76fa9016bac6df, type: 3}
   switchOffSound: {fileID: 8300000, guid: 2cf7981831e5e514ab186d8834ab4e54, type: 3}
