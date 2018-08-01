@@ -17,10 +17,10 @@ public class SceneController : MonoBehaviour {
 		SceneManager.LoadScene ("Scene1");
 	}
 	public void OnClickDemoScene2(){
-		SceneManager.LoadScene ("DemoScene2");
+		SceneManager.LoadScene ("Scene2");
 	}
 	public void OnClickDemoScene3(){
-		SceneManager.LoadScene ("DemoScene3");
+		SceneManager.LoadScene ("Scene3");
 	}
 	public void OnClickLoadNextScene(){
 		SceneManager.LoadScene (nextScene);
