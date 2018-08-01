@@ -508,7 +508,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1977756648619172}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -18.884567, y: -19.39015, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.4}
   m_Children:
   - {fileID: 4998342583005024}
@@ -716,7 +716,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  SR: {fileID: 212442730613090000}
+  xInput: 0
+  yInput: 0
+  SR: {fileID: 212475530613360722}
 --- !u!114 &114188655183983728
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -824,6 +826,7 @@ MonoBehaviour:
   - {fileID: 1044359100303848}
   RayHolder: {fileID: 1288395232934382}
   AimerHolder: {fileID: 1870400003307358}
+  Cat: {fileID: 1170239898114256}
   pnce: {fileID: 0}
   TL: {fileID: 0}
   attachRight: 0

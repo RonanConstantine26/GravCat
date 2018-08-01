@@ -3108,23 +3108,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 4434770175635324, guid: 8a3e976816f5c3c4e82b2a126c476e40, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4434770175635324, guid: 8a3e976816f5c3c4e82b2a126c476e40, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 23879860455124842, guid: 8a3e976816f5c3c4e82b2a126c476e40,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 114824888152196956, guid: 8a3e976816f5c3c4e82b2a126c476e40,
-        type: 2}
-      propertyPath: nextLevel
-      value: MainMenuScene
+    - target: {fileID: 1727775153049370, guid: 8a3e976816f5c3c4e82b2a126c476e40, type: 2}
+      propertyPath: m_Name
+      value: Goal2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a3e976816f5c3c4e82b2a126c476e40, type: 2}
