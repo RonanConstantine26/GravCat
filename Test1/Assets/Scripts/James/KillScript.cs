@@ -33,7 +33,7 @@ public class KillScript : MonoBehaviour {
 
     IEnumerator Die(Collision2D other)
     {
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(0.5f);
         //Destroy(other.gameObject);
         startRestartTime = Time.time;
         gameOver = true;
