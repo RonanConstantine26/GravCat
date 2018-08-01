@@ -47,14 +47,15 @@ public class Character : MonoBehaviour {
 
 		//checks if the player is touching anything
 		//if not then the player cannot move or jump
-		Collider2D col = Physics2D.OverlapCircle (transform.position, 2.3f,lm);
-		if (col != null && col.tag != "Player" && !RCC.attachTop && !RCC.attachTopAny) {
+		Collider2D col = Physics2D.OverlapCircle (transform.position, 4f,lm);
+		if (col != null && col.tag != "Player" && !RCC.attachTop) {
 			canMove = true;
 			canJump = true;
 
 		} else {
 			canMove = false;
 			canJump = false;
+			print("nothing!");
 		}
 
 		//Checking if player is falling
@@ -63,6 +64,12 @@ public class Character : MonoBehaviour {
 		} else {
 			isFalling = false;
 		}
+
+		if ((isImmobile  && RCC.attachTop) /*|| (canJump &&(RCC.attachLeftAny||RCC.attachLeftBox||RCC.attachLeft) &&(RCC.attachRight||RCC.attachRightAny||RCC.attachRightBox))*/) {
+			isImmobile = false;
+		}
+
+
 	}
 
 	void OnCollisionExit2D(Collision2D other)

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class EndScript : MonoBehaviour {
 
-	public int nextLevelNum;
+	public string nextLevel;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +19,7 @@ public class EndScript : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D other) {
 		if (other.gameObject.tag == "Player") {
-			SceneManager.LoadScene (nextLevelNum);
+			SceneManager.LoadScene (nextLevel);
 		}
 	}
 }

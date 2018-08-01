@@ -2163,6 +2163,34 @@ Prefab:
       propertyPath: m_Color.b
       value: 0.4299308
       objectReference: {fileID: 0}
+    - target: {fileID: 4586739416379264, guid: d6963e092fd319343b7d9e4e3618ded2, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586739416379264, guid: d6963e092fd319343b7d9e4e3618ded2, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4586739416379264, guid: d6963e092fd319343b7d9e4e3618ded2, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 212044753984659980, guid: d6963e092fd319343b7d9e4e3618ded2,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 436780df4b282a344a39c63062a8a864,
+        type: 3}
+    - target: {fileID: 61259924046271206, guid: d6963e092fd319343b7d9e4e3618ded2,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 21.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 61259924046271206, guid: d6963e092fd319343b7d9e4e3618ded2,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 21.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6963e092fd319343b7d9e4e3618ded2, type: 2}
   m_IsPrefabParent: 0
@@ -2171,3 +2199,20 @@ GameObject:
   m_PrefabParentObject: {fileID: 1330838977858194, guid: d6963e092fd319343b7d9e4e3618ded2,
     type: 2}
   m_PrefabInternal: {fileID: 1836668612}
+--- !u!95 &2076155743
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2076155733}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6f4742557aa6b2345975044649a53b9b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1

@@ -11,7 +11,7 @@ public class CatController : MonoBehaviour {
 	private Pounce pnce;
 
 	public float moveSpeed = 10f; 
-	private float xInput, yInput;
+	public float xInput, yInput;
 
 	public SpriteRenderer SR;
 
@@ -25,20 +25,26 @@ public class CatController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		checkDirection ();
+
+		if (RCC.pnce.Char.isJumping||RCC.pnce.Char.isFalling) {
+			checkDirectionJump ();
+		} else {
+			checkDirection ();
+		}
+
 
 		if(charScript.canMove && pnce.CheckLevelRot())
 		{
-			if(!RCC.attachRight && !RCC.attachLeft && !RCC.attachRightAny&& !RCC.attachLeftAny)
+			if(!RCC.attachRight && !RCC.attachLeft && !RCC.attachRightAny&& !RCC.attachLeftAny && !RCC.attachRightBox && !RCC.attachLeftBox )
 			{
 				checkMovement (false,false);
 				print ("1 in");
 			}
-			if(RCC.attachRight || RCC.attachRightAny)
+			if(RCC.attachRight || RCC.attachRightAny || RCC.attachRightBox)
 			{
 				checkMovement (false, true);
 			}
-			if(RCC.attachLeft || RCC.attachLeftAny)
+			if(RCC.attachLeft || RCC.attachLeftAny || RCC.attachLeftBox)
 			{
 				checkMovement (true, false);
 			}
@@ -57,8 +63,24 @@ public class CatController : MonoBehaviour {
 
 		if (Mathf.Abs(xInput) != 0f)
 		{
-			SpriteRenderer SR = GetComponent<SpriteRenderer>();
+			//SpriteRenderer SR = GetComponent<SpriteRenderer>();
 			if (xInput < 0f) {
+				SR.flipX = false;
+			}
+			else {
+				SR.flipX = true;
+			}
+		}
+	}
+
+	public void checkDirectionJump(){
+		xInput = joystick.LeftStick.X;  
+		yInput = joystick.LeftStick.Y;
+
+		if (Mathf.Abs(RCC.pnce.rb.velocity.x ) != 0f)
+		{
+			//SpriteRenderer SR = GetComponent<SpriteRenderer>();
+			if (RCC.pnce.rb.velocity.x < 0f) {
 				SR.flipX = false;
 			}
 			else {
@@ -69,13 +91,15 @@ public class CatController : MonoBehaviour {
 
 	void checkMovement(bool isright,bool isleft){
 
-		//charScript.RCC.pnce.rb.velocity = Vector2.zero;
+
 		if (xInput == 0) {
 			charScript.isRunningRight = false;
 			charScript.isRunningLeft = false;
 			charScript.isIdle = true;
+			//print (zero);
 		} else {
 			charScript.isIdle = false;
+			//charScript.RCC.pnce.rb.velocity = new Vector2(0,RCC.pnce.rb.velocity.y);
 		}
 
 		if(!isright && !isleft)
