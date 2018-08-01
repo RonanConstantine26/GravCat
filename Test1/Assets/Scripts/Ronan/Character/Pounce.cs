@@ -121,11 +121,11 @@ public class Pounce : MonoBehaviour {
 			rb.isKinematic= false;
 		}
 
-		if(!rightBeingUsed)
+		/*if(!rightBeingUsed)
 		{
 			Char.isRunningRight = false;
 			Char.isRunningLeft = false;
-		}
+		}*/
 
 		if(Char.isJumping && (RCc.attachLeft||RCc.attachRight))
 		{

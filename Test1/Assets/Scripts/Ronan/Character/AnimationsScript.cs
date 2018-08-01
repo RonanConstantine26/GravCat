@@ -59,7 +59,7 @@ public class AnimationsScript : MonoBehaviour {
             anim.SetBool("is Falling", false);
         }
 
-        else if (charScript.isRunningLeft || charScript.isRunningRight)
+        if (charScript.isRunningLeft || charScript.isRunningRight)
         {
             anim.SetBool("is Walking", true);
             anim.SetBool("is Idle", false);

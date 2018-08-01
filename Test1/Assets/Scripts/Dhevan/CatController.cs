@@ -35,7 +35,7 @@ public class CatController : MonoBehaviour {
 
 		if(charScript.canMove && pnce.CheckLevelRot())
 		{
-			if(!RCC.attachRight && !RCC.attachLeft && !RCC.attachRightAny&& !RCC.attachLeftAny && !RCC.attachRightBox && !RCC.attachLeftBox )
+			if(!RCC.attachRight && !RCC.attachLeft && !RCC.attachRightAny&& !RCC.attachLeftAny && !RCC.attachRightBox && !RCC.attachLeftBox  )
 			{
 				checkMovement (false,false);
 				print ("1 in");
@@ -95,6 +95,7 @@ public class CatController : MonoBehaviour {
 		if (xInput == 0) {
 			charScript.isRunningRight = false;
 			charScript.isRunningLeft = false;
+			print ("aaaah");
 			charScript.isIdle = true;
 			//print (zero);
 		} else {
@@ -107,15 +108,14 @@ public class CatController : MonoBehaviour {
 			Vector3 Movement = new Vector3(xInput, 0f, 0f) * Time.deltaTime * moveSpeed;
 			this.transform.Translate(Movement, Space.World); 
 			print ("in 3");
-			if(xInput>0)
-			{
+			if (xInput > 0) {
 				charScript.isRunningRight = true;
 				charScript.isRunningLeft = false;
-			}
-			if(xInput<0)
-			{
+			} else if (xInput < 0) {
 				charScript.isRunningRight = false;
 				charScript.isRunningLeft = true;
+			} else {
+				print ("0");
 			}
 		}
 		else if(isright)
