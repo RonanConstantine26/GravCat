@@ -294,6 +294,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a91c1cf2f1a21f942a1684313338b972, type: 2}
   m_IsPrefabParent: 0
+<<<<<<< HEAD
 --- !u!4 &291879264 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4799992555216720, guid: a91c1cf2f1a21f942a1684313338b972,
@@ -462,6 +463,56 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 372656302}
 --- !u!1 &603340344
+=======
+--- !u!1 &1380852833 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1753074650048528, guid: 802f80b00a9a2024fac184e16b53c09d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1536018632}
+--- !u!1001 &1420685087
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4148081711074590, guid: acdd8de717b966e40bf47e8076145462, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.8100014
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148081711074590, guid: acdd8de717b966e40bf47e8076145462, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148081711074590, guid: acdd8de717b966e40bf47e8076145462, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148081711074590, guid: acdd8de717b966e40bf47e8076145462, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148081711074590, guid: acdd8de717b966e40bf47e8076145462, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148081711074590, guid: acdd8de717b966e40bf47e8076145462, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148081711074590, guid: acdd8de717b966e40bf47e8076145462, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4148081711074590, guid: acdd8de717b966e40bf47e8076145462, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: acdd8de717b966e40bf47e8076145462, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &1429253239
+>>>>>>> 90ff14ebcd94b8d7c6708900305483d3b004cbbf
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -660,6 +711,40 @@ Prefab:
       propertyPath: inputArr.Array.size
       value: 1
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
+    - target: {fileID: 4483618316637858, guid: 802f80b00a9a2024fac184e16b53c09d, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483618316637858, guid: 802f80b00a9a2024fac184e16b53c09d, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.3625444
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483618316637858, guid: 802f80b00a9a2024fac184e16b53c09d, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1.3625451
+      objectReference: {fileID: 0}
+    - target: {fileID: 4483618316637858, guid: 802f80b00a9a2024fac184e16b53c09d, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1.3625451
+      objectReference: {fileID: 0}
+    - target: {fileID: 114752379052791534, guid: 802f80b00a9a2024fac184e16b53c09d,
+        type: 2}
+      propertyPath: switchBehaviour
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 802f80b00a9a2024fac184e16b53c09d, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1639491333
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+>>>>>>> 90ff14ebcd94b8d7c6708900305483d3b004cbbf
     - target: {fileID: 4977302158735134, guid: f5bc1e6d604d9704895e3ac520c22c9f, type: 2}
       propertyPath: m_LocalPosition.x
       value: 41.11686

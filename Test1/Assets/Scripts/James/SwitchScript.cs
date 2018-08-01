@@ -97,6 +97,7 @@ public class SwitchScript : MonoBehaviour {
 	}
 
 
+
 	void MoveButtonUp(){
 		this.transform.GetChild (0).transform.localPosition = Vector3.up * 0.15f;
 	}
